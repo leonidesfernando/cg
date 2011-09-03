@@ -1,10 +1,22 @@
 package br.com.home.cg.modelo;
 
-public class TipoLancamento {
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-	enum Tipo{
-		DINHEIRO, CHEQUE, CARTAO_DEBITO, CARTAO_CREDITO
+@Entity
+@Table(name="tipo_lancamento")
+public abstract class TipoLancamento {
+
+	private Integer id;
+	
+	public abstract String getTipo();
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
-	private Integer id;
 }
