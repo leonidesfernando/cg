@@ -1,5 +1,6 @@
 package br.com.home.cg.dao;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,16 @@ import br.com.home.cg.modelo.LancamentoAtivo;
 @Repository
 public class LancamentoAtivoDao {
 
-	@Autowired
 	private EntityManager em;
+	
+	@Autowired
+	private CGEntityManager factory;
+
+	@PostConstruct
+	public void init(){
+		
+		em = factory.getEntityManager(); 
+	}
 	
 	
 	public void salva(LancamentoAtivo lancamento){

@@ -1,26 +1,24 @@
 package br.com.home.cg.modelo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.joda.time.LocalDateTime;
-
 @Entity
 @Table(name="lancamento")
-public class Lancamento implements PK<LocalDateTime> {
+public class Lancamento implements PK<Date> {
 
 	
 	@Id
 	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime dataLancamento;
+	private Date dataLancamento;
 	
 	@Column(length=128)
 	private String descricao;
@@ -28,12 +26,13 @@ public class Lancamento implements PK<LocalDateTime> {
 	@Column(precision=8, scale=2)
 	private BigDecimal valorLancamento;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@Column
+	@Enumerated
 	private TipoLancamento tipoLancamento;
 
 	
 	@Override
-	public LocalDateTime getId() {
+	public Date getId() {
 		return dataLancamento;
 	}
 
@@ -45,11 +44,11 @@ public class Lancamento implements PK<LocalDateTime> {
 		this.descricao = descricao;
 	}
 
-	public LocalDateTime getDataLancamento() {
+	public Date getDataLancamento() {
 		return dataLancamento;
 	}
 
-	public void setDataLancamento(LocalDateTime dataLancamento) {
+	public void setDataLancamento(Date dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
 

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="cg">
+		<class>br.com.home.cg.modelo.LancamentoAtivo</class>
+		<class>br.com.home.cg.modelo.Lancamento</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+		<persistence-unit name="CGSpringJpaPersistenceUnit"
+			transaction-type="RESOURCE_LOCAL">
+			
+			<provider>org.hibernate.ejb.HibernatePersistence</provider>
+			
+			<properties>
+				<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/cg"/>
+				<property name="javax.persistence.jdbc.user" value="sa"></property>
+				<property name="javax.persistence.jdbc.password" value=""></property>
+				<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"></property>
+				<property name="hibernate.show_sql" value="true" />
+				<property name="hibernate.format_sql" value="true" />
+				
+			
+				<property name="hibernate.cache.provider_class" value="org.hibernate.cache.EhCacheProvider" />
+				<property name="hibernate.cache.use_second_level_cache"
+					value="true"></property>
+				<property name="hibernate.cache.use_query_cache" value="true"></property>
+				<property name="hibernate.jdbc.batch_size" value="0"></property>
+			</properties>
+		</persistence-unit>
+
+
+	</persistence-unit>
+</persistence>
