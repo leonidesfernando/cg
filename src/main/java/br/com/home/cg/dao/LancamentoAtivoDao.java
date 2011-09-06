@@ -14,7 +14,7 @@ public class LancamentoAtivoDao {
 	private EntityManager em;
 	
 	@Autowired
-	private CGEntityManager factory;
+	private CGEntityManagerFactory factory;
 
 	@PostConstruct
 	public void init(){
